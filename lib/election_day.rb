@@ -38,16 +38,26 @@ module ElectionDay
 
   def self.get_next_election(&block)
     year = Date.today.year
+    # If there's an election that matches, but it has already occured, skip it.
+    if block.call(self, year) && election_has_already_occured?(year)
+      year = year + 1
+    end
+    # Check years incrementally against provided block until match is found.
     year = year + 1 while !block.call(self, year)
+    # Return election date for the year that matches the block.
     get_election_date_by_year(year)
   end
 
   def self.get_election_date_by_year(year)
-    # start at beginning of November of election year
+    # Start at beginning of November of election year.
     date = Date.new(year, 11, 1)
-    # find the first monday of the month
+    # Find the first monday of the month.
     date = date.next_day while !date.monday?
-    # add one more day because election day follows the first Monday
+    # Add one more day because election day follows the first Monday.
     date.next_day
+  end
+
+  def self.election_has_already_occured?(year)
+    get_election_date_by_year(year) < Date.today
   end
 end

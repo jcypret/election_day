@@ -67,20 +67,80 @@ describe ElectionDay do
   end
 
   describe "#next_election" do
-    it "returns the date of the next election" do
-      expect(ElectionDay.next_election).to eq Date.new(2016, 11, 8)
+    context "when election is upcoming in the following year" do
+      it "returns the date of the next election" do
+        Timecop.freeze(Date.new(2015, 7, 4)) do
+          expect(ElectionDay.next_election).to eq Date.new(2016, 11, 8)
+        end
+      end
     end
-  end
 
-  describe "#next_presidential_election" do
-    it "returns the date of the next presidential election" do
-      expect(ElectionDay.next_presidential_election).to eq Date.new(2016, 11, 8)
+    context "when election is upcoming in current year" do
+      it "returns the date of the next election" do
+        Timecop.freeze(Date.new(2016, 7, 4)) do
+          expect(ElectionDay.next_election).to eq Date.new(2016, 11, 8)
+        end
+      end
+    end
+
+    context "when election has already occured in current year" do
+      it "returns the date of the next election" do
+        Timecop.freeze(Date.new(2016, 11, 9)) do
+          expect(ElectionDay.next_election).to eq Date.new(2018, 11, 6)
+        end
+      end
     end
   end
 
   describe "#next_midterm_election" do
-    it "returns the date of the next midterm election" do
-      expect(ElectionDay.next_midterm_election).to eq Date.new(2018, 11, 6)
+    context "when midterm election is upcoming in a following year" do
+      it "returns the date of the next midterm election" do
+        Timecop.freeze(Date.new(2015, 7, 4)) do
+          expect(ElectionDay.next_midterm_election).to eq Date.new(2018, 11, 6)
+        end
+      end
+    end
+
+    context "when midterm election is upcoming in current year" do
+      it "returns the date of the next midterm election" do
+        Timecop.freeze(Date.new(2018, 7, 4)) do
+          expect(ElectionDay.next_midterm_election).to eq Date.new(2018, 11, 6)
+        end
+      end
+    end
+
+    context "when midterm election has already occured in current year" do
+      it "returns the date of the next midterm election" do
+        Timecop.freeze(Date.new(2018, 11, 7)) do
+          expect(ElectionDay.next_midterm_election).to eq Date.new(2022, 11, 8)
+        end
+      end
+    end
+  end
+
+  describe "#next_presidential_election" do
+    context "when presidential election is upcoming in a following year" do
+      it "returns the date of the next presidential election" do
+        Timecop.freeze(Date.new(2017, 7, 4)) do
+          expect(ElectionDay.next_presidential_election).to eq Date.new(2020, 11, 3)
+        end
+      end
+    end
+
+    context "when presidential election is upcoming in current year" do
+      it "returns the date of the next presidential election" do
+        Timecop.freeze(Date.new(2020, 7, 4)) do
+          expect(ElectionDay.next_presidential_election).to eq Date.new(2020, 11, 3)
+        end
+      end
+    end
+
+    context "when presidential election has already occured in current year" do
+      it "returns the date of the next presidential election" do
+        Timecop.freeze(Date.new(2020, 11, 4)) do
+          expect(ElectionDay.next_presidential_election).to eq Date.new(2024, 11, 5)
+        end
+      end
     end
   end
 end
