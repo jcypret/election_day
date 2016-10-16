@@ -1,6 +1,9 @@
 # Election Day
 
+[![Gem Version](https://badge.fury.io/rb/election_day.svg)](https://badge.fury.io/rb/election_day)
 [![Build Status](https://travis-ci.org/jcypret/election_day.svg?branch=master)](https://travis-ci.org/jcypret/election_day)
+[![Code Climate](https://codeclimate.com/github/jcypret/election_day/badges/gpa.svg)](https://codeclimate.com/github/jcypret/election_day)
+[![Test Coverage](https://codeclimate.com/github/jcypret/election_day/badges/coverage.svg)](https://codeclimate.com/github/jcypret/election_day/coverage)
 
 ## Installation
 
