@@ -23,7 +23,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+The latest documentation for this library can be found here:
+[http://www.rubydoc.info/gems/election_day/ElectionDay](http://www.rubydoc.info/gems/election_day/ElectionDay)
 
 ## Development
 
