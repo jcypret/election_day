@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Justin Cypret"]
   spec.email         = ["jcypret@gmail.com"]
 
-  spec.summary       = %q{A library extracted from raisethemoney.com to calculate Election Day.}
+  spec.summary       = %q{A library to calculate when U.S. Election Day occurs.}
   spec.homepage      = "https://github.com/jcypret/election_day"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
